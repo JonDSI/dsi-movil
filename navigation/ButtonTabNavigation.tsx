@@ -2,51 +2,49 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Fontisto } from '@expo/vector-icons';
 
+import { PrincipalTabNavigation, HomeTabParam, ForwardTabParam } from '../navigation/ScreenTypes';
+
 import HomeScreen from '../screens/home/HomeScreen';
+import ForwardScreen from '../screens/forward/ForwardScreen';
 
-export type RootStackParam = {
-    Root: undefined;
-    NotFound: undefined;
-};
+const PrincipalTab = createBottomTabNavigator<PrincipalTabNavigation>();
 
-export type BottonNavigator = {
-    Home: undefined;
-    Forward: undefined;
-    Order: undefined;
-    User: undefined;
-};
-
-export type TabHomeParamStack = {
-    HomeScreen: undefined;
-};
-
-const BottonTab = createBottomTabNavigator<BottonNavigator>();
-
-export default function ButtonTabNavigation() {
-    return (<BottonTab.Navigator
+export default function DSITabsNavigation() {
+    return (
+    <PrincipalTab.Navigator
         initialRouteName='Home'>
-        <BottonTab.Screen
-            name='Home'
-            component={TabHomeNavigator}
-        ></BottonTab.Screen>
-    </BottonTab.Navigator>);
+        <PrincipalTab.Screen name='Inicio'   component={HomeTabNavigator} options={{}} />
+        <PrincipalTab.Screen name='Mandados' component={ForwardTabNavigation} options={{}} />
+        <PrincipalTab.Screen name='Pedidos'  component={ForwardTabNavigation} options={{}} />
+        <PrincipalTab.Screen name='Cuenta'   component={ForwardTabNavigation} options={{}} />
+    </PrincipalTab.Navigator>);
 }
 
 const TabBarIcon = (props: { name: string; color:string; }) =>  {
     return <Fontisto size={30} style={{ marginBottom: -3 }} {...props} />;    
 };
 
-const TabHomeStack = createStackNavigator<TabHomeParamStack>();
+const HomeTabStack = createStackNavigator<HomeTabParam>();
 
-const TabHomeNavigator = () => {
+const HomeTabNavigator = () => {
     return (
-    <TabHomeStack.Navigator>
-        <TabHomeStack.Screen 
-        name='HomeScreen'
-        component={HomeScreen}
-        options={{
-            headerTitle: 'Home' }}>
-        </TabHomeStack.Screen>
-    </TabHomeStack.Navigator>
+       <HomeTabStack.Navigator>
+           <HomeTabStack.Screen
+                name='HomeScreen'
+                component={HomeScreen}/>
+       </HomeTabStack.Navigator>
+    );
+
+};
+
+const ForwardTabStack = createStackNavigator<ForwardTabParam>();
+
+const ForwardTabNavigation = () => {
+    return (
+        <ForwardTabStack.Navigator>
+            <ForwardTabStack.Screen
+                name='ForwardScreen'
+                component={ForwardScreen}/>
+        </ForwardTabStack.Navigator>
     );
 };

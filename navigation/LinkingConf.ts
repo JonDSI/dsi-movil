@@ -10,10 +10,15 @@ export default {
                         screens: {
                             HomeScreen: 'one'
                         }
+                    },
+                    Forward: {
+                        screens: {
+                            ForwardScreen: 'two'
+                        }
                     }
                 }
             },
-            NotFound: {}
+            NotFound: '*'
         }
     }
 }
