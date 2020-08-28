@@ -15,6 +15,16 @@ export default {
                         screens: {
                             ForwardScreen: 'two'
                         }
+                    },
+                    Order: {
+                        screens: {
+                            OrderScreen: 'two'
+                        }
+                    },
+                    User: {
+                        screens: {
+                            UserScreen: 'two'
+                        }
                     }
                 }
             },

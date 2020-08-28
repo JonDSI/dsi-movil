@@ -18,3 +18,11 @@ export type HomeTabParam = {
 export type ForwardTabParam = {
     ForwardScreen: undefined;
 };
+
+export type OrderTabParam = {
+    OrderScreen: undefined;
+};
+
+export type UserTabParam = {
+    UserScreen: undefined;
+};
